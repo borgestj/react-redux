@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import Interval from './components/Interval'
+import Average from './components/Average'
+import Sum from './components/Sum'
+import Draw from './components/Draw'
+
 function App() {
+
+  const [min, setMin] = useState(0)
+  const [max, setMax] = useState(10)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Exercício React-Redux (Simple)</h1>
+      <div className="line">
+        <Interval min={min} max={max}
+          onMinChanged={setMin} onMaxChanged={setMax}></Interval>
+      </div>
+      <div className="line">
+        <Average min={min} max={max}></Average>
+        <Sum min={min} max={max}></Sum>
+        <Draw min={min} max={max}></Draw>
+      </div>
     </div>
   );
 }
